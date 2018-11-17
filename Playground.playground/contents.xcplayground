@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered' executeOnSourceChanges='false'>
+    <pages>
+        <page name='Summary'/>
+        <page name='UIBarButtonItem'/>
+        <page name='UIDatePicker'/>
+        <page name='UISegmentedControl'/>
+        <page name='UISlider'/>
+        <page name='UIStepper'/>
+        <page name='UISwitch'/>
+        <page name='UITextField'/>
+        <page name='UITextView'/>
+        <page name='UIView'/>
+        <page name='ASDisplayNode'/>
+        <page name='ASEditableTextNode'/>
+    </pages>
+</playground>
