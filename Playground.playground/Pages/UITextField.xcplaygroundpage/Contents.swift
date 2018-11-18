@@ -1,14 +1,3 @@
-/*:
- ### `text`
- Sends text on change.
-
- ### `attributedText`
- Sends attributed text on change.
-
- ### `editEvents`
- Sends user interaction events.
- */
-
 import PlaygroundSupport
 import ReactivePixel
 
@@ -18,15 +7,27 @@ let textField = UITextField(frame: .init(origin: .zero,
 textField.backgroundColor = #colorLiteral(red: 0.5837298334, green: 0.6842804686, blue: 1, alpha: 1)
 
 
-/// Listens to text changes
+/*:
+ ### `text`
+ Sends text on change.
+ */
+
 textField.reactive.text
     .startWithValues { print("Text : \($0)") }
 
-/// Listens to attributed text changes
+/*:
+ ### `attributedText`
+ Sends attributed text on change.
+ */
+
 textField.reactive.attributedText
     .startWithValues { print("Attributed text : \($0)") }
 
-/// Listens to events
+/*:
+ ### `editEvents`
+ Sends user interaction events.
+ */
+
 textField.reactive.editEvents(.all)
     .startWithValues { print("Event : \($0)") }
 
