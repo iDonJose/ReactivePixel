@@ -3,7 +3,7 @@
  > 1. Install Pod depencies by running `$ pod install`
  > 1. Open `ReactivePixel.xcworkspace`
  > 1. Build `ReactivePixel-iOS` scheme with an iOS Simulator
- > 1. Open the `ReactiveSwift.playground`
+ > 1. Open the `Playground.playground`
  > 1. Run Playground !
 
  ***
