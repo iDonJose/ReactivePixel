@@ -17,13 +17,12 @@ Pod::Spec.new do |s|
 
     s.author       = { "iDonJose" => "donor.develop@gmail.com" }
 
-
 	s.frameworks = "Foundation", "UIKit"
 
 
 	s.subspec 'UIKit' do |uikit|
 
-    	uikit.deployment_target = "8.0"
+    	uikit.ios.deployment_target = "8.0"
 
 		uikit.dependency 'ReactiveSwifty', '~> 1.0'
 
@@ -36,7 +35,7 @@ Pod::Spec.new do |s|
 
 	s.subspec 'Texture' do |texture|
 
-    	texture.deployment_target = "9.0"
+    	texture.ios.deployment_target = "9.0"
 
 		texture.dependency 'ReactivePixel/UIKit'
 
