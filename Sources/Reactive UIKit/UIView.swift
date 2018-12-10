@@ -72,10 +72,6 @@ private final class Proxy<GestureRecognizer: UIGestureRecognizer>: NSObject, UIG
 		self.action = action
 		super.init()
 
-		if !view.isUserInteractionEnabled {
-			view.isUserInteractionEnabled = true
-		}
-
 		gestureRecognizer.addTarget(self, action: #selector(listen))
 		view.addGestureRecognizer(gestureRecognizer)
 
