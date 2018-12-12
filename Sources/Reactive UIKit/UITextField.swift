@@ -112,7 +112,7 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 		self.action = action
 		super.init()
 
-		textField.addTarget(self, action: #selector(listen), for: .editingChanged)
+		textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
 
 		/// Use a delegate only when some events either than editing changed are needed
 		if events != .editingChange {
@@ -132,12 +132,12 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 
 
 	@objc
-	private func listen() {
+	private func didChangeText() {
 		action(.editingChange)
 	}
 
 	fileprivate func stopListening() {
-		textField?.removeTarget(self, action: #selector(listen), for: .editingChanged)
+		textField?.removeTarget(self, action: #selector(didChangeText), for: .editingChanged)
 		textField?.delegate = nil
 	}
 
