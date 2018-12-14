@@ -20,7 +20,10 @@ extension Reactive where Base: ASEditableTextNode {
 	///
 	/// - Parameter events: Events to listen to
 	/// - Returns: A SignalProducer of events.
-	public func editEvents(_ events: ASEditableTextNode.Event) -> SignalProducer<ASEditableTextNode.Event, NoError> {
+	public func editEvents(_ events: ASEditableTextNode.Event,
+						   shouldStartEditing: (() -> Bool)? = nil,
+						   shouldChangeText: ((_ range: NSRange, _ replacement: String) -> Bool)? = nil,
+						   didChangeSelection: ((_ oldRange: NSRange, _ newRange: NSRange, _ dueToEditing: Bool) -> Void)? = nil) -> SignalProducer<ASEditableTextNode.Event, NoError> {
 
 		return SignalProducer { [weak base] observer, disposable in
 
@@ -29,9 +32,16 @@ extension Reactive where Base: ASEditableTextNode {
 				return
 			}
 
-			let proxy = Proxy(editableText: base, events: events) { event in
+			let action: (ASEditableTextNode.Event) -> Void = { event in
 				observer.send(value: event)
 			}
+
+			let proxy = Proxy(editableText: base,
+							  events: events,
+							  action: action,
+							  shouldStartEditing: shouldStartEditing,
+							  shouldChangeText: shouldChangeText,
+							  didChangeSelection: didChangeSelection)
 
 			disposable.ended
 				.observe(on: UIScheduler())
@@ -98,15 +108,30 @@ private final class Proxy: NSObject, ASEditableTextNodeDelegate {
 	private let action: (ASEditableTextNode.Event) -> Void
 
 
+	// MARK: Delegate Callbacks
+
+	private let shouldStartEditing: (() -> Bool)?
+	private let shouldChangeText: ((_ range: NSRange, _ replacement: String) -> Bool)?
+	private let didChangeSelection: ((_ oldRange: NSRange, _ newRange: NSRange, _ dueToEditing: Bool) -> Void)?
+
+
 	// MARK: - Initialize
 
 	fileprivate init(editableText: ASEditableTextNode,
 					 events: ASEditableTextNode.Event,
-					 action: @escaping (ASEditableTextNode.Event) -> Void) {
+					 action: @escaping (ASEditableTextNode.Event) -> Void,
+					 shouldStartEditing: (() -> Bool)?,
+					 shouldChangeText: ((_ range: NSRange, _ replacement: String) -> Bool)?,
+					 didChangeSelection: ((_ oldRange: NSRange, _ newRange: NSRange, _ dueToEditing: Bool) -> Void)?) {
 
 		self.editableText = editableText
 		self.events = events
 		self.action = action
+
+		self.shouldStartEditing = shouldStartEditing
+		self.shouldChangeText = shouldChangeText
+		self.didChangeSelection = didChangeSelection
+
 		super.init()
 
 		editableText.delegate = self
@@ -131,22 +156,42 @@ private final class Proxy: NSObject, ASEditableTextNodeDelegate {
 	// MARK: - ASEditableTextNodeDelegate
 
 	func editableTextNodeDidBeginEditing(_ editableTextNode: ASEditableTextNode) {
-		action(.editingStart)
+		if events.contains(.editingStart) {
+			action(.editingStart)
+		}
 	}
 
 	func editableTextNodeDidFinishEditing(_ editableTextNode: ASEditableTextNode) {
-		action(.editingEnd)
+		if events.contains(.editingEnd) {
+			action(.editingEnd)
+		}
 	}
 
 	func editableTextNodeDidUpdateText(_ editableTextNode: ASEditableTextNode) {
-		action(.editingChange)
+		if events.contains(.editingChange) {
+			action(.editingChange)
+		}
+	}
+
+
+	func editableTextNodeShouldBeginEditing(_ editableTextNode: ASEditableTextNode) -> Bool {
+		return shouldStartEditing?() ?? true
+	}
+
+	func editableTextNode(_ editableTextNode: ASEditableTextNode,
+						  shouldChangeTextIn range: NSRange,
+						  replacementText text: String) -> Bool {
+		return shouldChangeText?(range, text) ?? true
 	}
 
 	func editableTextNodeDidChangeSelection(_ editableTextNode: ASEditableTextNode,
-											fromSelectedRange: NSRange,
-											toSelectedRange: NSRange,
+											fromSelectedRange start: NSRange,
+											toSelectedRange end: NSRange,
 											dueToEditing: Bool) {
-		action(.selectionChange)
+		didChangeSelection?(start, end, dueToEditing)
+		if events.contains(.selectionChange) {
+			action(.selectionChange)
+		}
 	}
 
 }
