@@ -114,6 +114,7 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 	/// Action to trigger on events
 	private let action: (UITextField.EditEvent) -> Void
 
+
     // MARK: Delegate Callbacks
 
     private let shouldClear: (() -> Bool)?
