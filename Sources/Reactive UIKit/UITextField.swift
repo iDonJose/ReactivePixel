@@ -20,7 +20,12 @@ extension Reactive where Base: UITextField {
 	///
 	/// - Parameter events: Events to listen to
 	/// - Returns: A SignalProducer of events.
-	public func editEvents(_ events: UITextField.EditEvent) -> SignalProducer<UITextField.EditEvent, NoError> {
+	public func editEvents(_ events: UITextField.EditEvent,
+                           shouldClear: (() -> Bool)? = nil,
+                           shouldReturn: (() -> Bool)? = nil,
+                           shouldStartEditing: (() -> Bool)? = nil,
+                           shouldEndEditing: (() -> Bool)? = nil,
+                           shouldChangeCharacters: ((_ range: NSRange, _ replacement: String) -> Bool)? = nil) -> SignalProducer<UITextField.EditEvent, NoError> {
 
 		return SignalProducer { [weak base] observer, disposable in
 
@@ -29,9 +34,18 @@ extension Reactive where Base: UITextField {
 				return
 			}
 
-			let proxy = Proxy(textField: base, events: events) { event in
-				observer.send(value: event)
-			}
+            let action: (UITextField.EditEvent) -> Void = { event in
+                observer.send(value: event)
+            }
+
+            let proxy = Proxy(textField: base,
+                              events: events,
+                              action: action,
+                              shouldClear: shouldClear,
+                              shouldReturn: shouldReturn,
+                              shouldStartEditing: shouldStartEditing,
+                              shouldEndEditing: shouldEndEditing,
+                              shouldChangeCharacters: shouldChangeCharacters)
 
 			disposable.ended
 				.observe(on: UIScheduler())
@@ -100,16 +114,36 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 	/// Action to trigger on events
 	private let action: (UITextField.EditEvent) -> Void
 
+    // MARK: Delegate Callbacks
+
+    private let shouldClear: (() -> Bool)?
+    private let shouldReturn: (() -> Bool)?
+    private let shouldStartEditing: (() -> Bool)?
+    private let shouldEndEditing: (() -> Bool)?
+    private let shouldChangeCharacters: ((_ range: NSRange, _ replacement: String) -> Bool)?
+
 
 	// MARK: - Initialize
 
 	fileprivate init(textField: UITextField,
 					 events: UITextField.EditEvent,
-					 action: @escaping (UITextField.EditEvent) -> Void) {
+					 action: @escaping (UITextField.EditEvent) -> Void,
+                     shouldClear: (() -> Bool)?,
+                     shouldReturn: (() -> Bool)?,
+                     shouldStartEditing: (() -> Bool)?,
+                     shouldEndEditing: (() -> Bool)?,
+                     shouldChangeCharacters: ((_ range: NSRange, _ replacement: String) -> Bool)?) {
 
 		self.textField = textField
 		self.events = events
 		self.action = action
+
+        self.shouldClear = shouldClear
+        self.shouldReturn = shouldReturn
+        self.shouldStartEditing = shouldStartEditing
+        self.shouldEndEditing = shouldEndEditing
+        self.shouldChangeCharacters = shouldChangeCharacters
+
 		super.init()
 
 		textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
@@ -133,7 +167,7 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 
 	@objc
 	private func didChangeText() {
-		action(.editingChange)
+        action(.editingChange)
 	}
 
 	fileprivate func stopListening() {
@@ -145,26 +179,55 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 	// MARK: - UITextFieldDelegate
 
 	func textFieldDidBeginEditing(_ textField: UITextField) {
-		action(.editingStart)
+        if events.contains(.editingStart) {
+            action(.editingStart)
+        }
 	}
 
 	@available(iOS 10.0, *)
 	func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-		action(.editingEnd)
+        if events.contains(.editingEnd) {
+            action(.editingEnd)
+        }
 	}
 
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		action(.editingEnd)
+        if events.contains(.editingEnd) {
+            action(.editingEnd)
+        }
 	}
 
 	func textFieldShouldClear(_ textField: UITextField) -> Bool {
-		action(.clear)
-		return true
+        let clears = shouldClear?() ?? true
+        if clears && events.contains(.clear) {
+            action(.clear)
+        }
+		return clears
 	}
 
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		action(.return)
-		return true
+        let returns = shouldReturn?() ?? true
+        if returns && events.contains(.return) {
+            action(.return)
+        }
+		return returns
 	}
+
+
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return shouldStartEditing?() ?? true
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return shouldEndEditing?() ?? true
+    }
+
+
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        return shouldChangeCharacters?(range, string) ?? true
+    }
 
 }
