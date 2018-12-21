@@ -61,12 +61,12 @@ extension Reactive where Base: UITextView {
 							  shouldInteractWithTextAttachment: _shouldInteractWithTextAttachment)
 
 			disposable.ended
-				.observe(on: UIScheduler())
+                .observe(on: QueueScheduler.main)
 				.observeCompleted { proxy.stopListening() }
 
 		}
-		.start(on: UIScheduler())
-		.take(during: base.lifetime)
+		.start(on: QueueScheduler.main)
+        .take(during: base.lifetime)
 
 	}
 
@@ -116,12 +116,12 @@ extension Reactive where Base: UITextView {
 							  shouldInteractWithTextAttachment: _shouldInteractWithTextAttachment)
 
 			disposable.ended
-				.observe(on: UIScheduler())
+                .observe(on: QueueScheduler.main)
 				.observeCompleted { proxy.stopListening() }
 
 		}
-		.start(on: UIScheduler())
-		.take(during: base.lifetime)
+		.start(on: QueueScheduler.main)
+        .take(during: base.lifetime)
 
 	}
 

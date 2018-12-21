@@ -55,11 +55,11 @@ extension Reactive where Base: UIView {
 							  shouldReceivePress: shouldReceivePress)
 
 			disposable.ended
-				.observe(on: UIScheduler())
+                .observe(on: QueueScheduler.main)
 				.observeCompleted { proxy.stopListening() }
 
 		}
-		.start(on: UIScheduler())
+		.start(on: QueueScheduler.main)
 		.take(during: base.lifetime)
 
 	}

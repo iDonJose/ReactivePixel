@@ -44,11 +44,11 @@ extension Reactive where Base: ASEditableTextNode {
 							  didChangeSelection: didChangeSelection)
 
 			disposable.ended
-				.observe(on: UIScheduler())
+                .observe(on: QueueScheduler.main)
 				.observeCompleted { proxy.stopListening() }
 
 		}
-		.start(on: UIScheduler())
+		.start(on: QueueScheduler.main)
 		.take(during: base.lifetime)
 
 	}
