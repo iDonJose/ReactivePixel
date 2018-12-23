@@ -91,10 +91,11 @@ extension UITextField {
 		public static let editingStart = EditEvent(rawValue: 1 << 0)
 		public static let editingEnd = EditEvent(rawValue: 1 << 1)
 		public static let editingChange = EditEvent(rawValue: 1 << 2)
-		public static let clear = EditEvent(rawValue: 1 << 3)
-		public static let `return` = EditEvent(rawValue: 1 << 4)
+        public static let selectionChange = EditEvent(rawValue: 1 << 3)
+		public static let clear = EditEvent(rawValue: 1 << 4)
+		public static let `return` = EditEvent(rawValue: 1 << 5)
 
-		public static let all: EditEvent = [.editingStart, .editingEnd, .editingChange, .clear, .return]
+		public static let all: EditEvent = [.editingStart, .editingEnd, .editingChange, .selectionChange, .clear, .return]
 
 		// MARK: - Initialize
 
@@ -114,6 +115,7 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 	/// Action to trigger on events
 	private let action: (UITextField.EditEvent) -> Void
 
+    private var observer: NSKeyValueObservation?
 
     // MARK: Delegate Callbacks
 
@@ -149,6 +151,12 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 
 		textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
 
+        observer = textField.observe(\.selectedTextRange) {
+            [unowned self] object, change in
+            self.didChangeSelection()
+        }
+
+
 		/// Use a delegate only when some events either than editing changed are needed
 		if events != .editingChange {
 			textField.delegate = self
@@ -171,9 +179,16 @@ private final class Proxy: NSObject, UITextFieldDelegate {
         action(.editingChange)
 	}
 
+    func didChangeSelection() {
+        if events.contains(.selectionChange) {
+            action(.selectionChange)
+        }
+    }
+
 	fileprivate func stopListening() {
 		textField?.removeTarget(self, action: #selector(didChangeText), for: .editingChanged)
 		textField?.delegate = nil
+        observer?.invalidate()
 	}
 
 
