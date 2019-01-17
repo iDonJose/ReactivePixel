@@ -1,25 +1,19 @@
 PODS:
-  - Nimble (7.3.1)
-  - Quick (1.3.2)
   - ReactiveSwift (4.0.0):
     - Result (~> 4.0)
-  - ReactiveSwifty (1.0.0):
+  - ReactiveSwifty (1.0.1):
     - ReactiveSwift (~> 4.0)
-  - Result (4.0.0)
-  - SwiftLint (0.28.0)
+  - Result (4.1.0)
+  - SwiftLint (0.29.4)
   - Texture/Core (2.7)
 
 DEPENDENCIES:
-  - Nimble (~> 7.3)
-  - Quick (~> 1.3)
   - ReactiveSwifty (~> 1.0)
   - SwiftLint (~> 0.28)
   - Texture/Core (~> 2.7)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Nimble
-    - Quick
     - ReactiveSwift
     - ReactiveSwifty
     - Result
@@ -27,14 +21,12 @@ SPEC REPOS:
     - Texture
 
 SPEC CHECKSUMS:
-  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
-  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
-  ReactiveSwifty: df947241d569bc05f03d571e58270af31030ed56
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
-  SwiftLint: 088cfacb75b45970017e62b7524d506776d60148
+  ReactiveSwifty: ae1142a03dc0209b059e08ecc5a330e7eccbe6a9
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SwiftLint: 73f2ecfd0f6d812c8cb9a73c00fe809bc2504585
   Texture: 9d7e38965cf22ccd7cd9c249dd78b3f14e70ab6c
 
-PODFILE CHECKSUM: eb8a86dc402f1c8527ca526aedf804d637739bfd
+PODFILE CHECKSUM: 116bde54df0a350363ebed8c09598b995fa6eabd
 
 COCOAPODS: 1.5.3

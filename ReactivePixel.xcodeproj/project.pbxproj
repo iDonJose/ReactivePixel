@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		050E77AD547A3AAFB04C19AC /* Pods_ReactivePixel_Tests_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32FC73607F3F62FC956A691 /* Pods_ReactivePixel_Tests_iOS.framework */; };
 		4E95F3CDD3EE32E7CD2DE1E7 /* Pods_ReactivePixel_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED8F4CAA87A1F9273FA87CE /* Pods_ReactivePixel_iOS.framework */; };
 		82954353219FDBF1004C2F25 /* ASDisplayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82954352219FDBF1004C2F25 /* ASDisplayNode.swift */; };
 		82954355219FDD42004C2F25 /* ASControlNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82954354219FDD42004C2F25 /* ASControlNode.swift */; };
@@ -53,8 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		021AF46A1628C2CAC50D369C /* Pods-ReactivePixel-Tests-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactivePixel-Tests-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactivePixel-Tests-iOS/Pods-ReactivePixel-Tests-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		42348A1D10B90D3870CDFB69 /* Pods-ReactivePixel-Tests-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactivePixel-Tests-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactivePixel-Tests-iOS/Pods-ReactivePixel-Tests-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4984900E916D7D3687AD9A0C /* Pods-ReactivePixel-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactivePixel-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactivePixel-iOS/Pods-ReactivePixel-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		4ED8F4CAA87A1F9273FA87CE /* Pods_ReactivePixel_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactivePixel_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		760CCAECCD7E168A374C936C /* Pods-ReactivePixel-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactivePixel-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactivePixel-iOS/Pods-ReactivePixel-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,7 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_9DC063879438293F382870F7BF692C69 /* ReactivePixel.framework in Frameworks */,
-				050E77AD547A3AAFB04C19AC /* Pods_ReactivePixel_Tests_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,8 +109,6 @@
 		2912F997E2D46965D53F4070 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				42348A1D10B90D3870CDFB69 /* Pods-ReactivePixel-Tests-iOS.debug.xcconfig */,
-				021AF46A1628C2CAC50D369C /* Pods-ReactivePixel-Tests-iOS.release.xcconfig */,
 				760CCAECCD7E168A374C936C /* Pods-ReactivePixel-iOS.debug.xcconfig */,
 				4984900E916D7D3687AD9A0C /* Pods-ReactivePixel-iOS.release.xcconfig */,
 			);
@@ -252,11 +246,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CL_4A00F5EAFA3627D08FE6C1B8DE2F406C /* Build configuration list for PBXNativeTarget "ReactivePixel-Tests-iOS" */;
 			buildPhases = (
-				41F84FB2506E7D7839301271 /* [CP] Check Pods Manifest.lock */,
 				SBP_D9F2F5FCE3E6D9CEE475D4D4C88B8073 /* Sources */,
 				FBP_E48A95C0A5DB297CAC9835296A8CC053 /* Frameworks */,
 				CFBP_166FD8D38AF506BB75F61230B365BAC8 /* Embed Frameworks */,
-				205D8B900D5AD207F1C7CF84 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,52 +293,6 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		205D8B900D5AD207F1C7CF84 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReactivePixel-Tests-iOS/Pods-ReactivePixel-Tests-iOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwifty/ReactiveSwifty.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwifty.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactivePixel-Tests-iOS/Pods-ReactivePixel-Tests-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		41F84FB2506E7D7839301271 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReactivePixel-Tests-iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DEA008247A0A4BEB90F52223 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -475,7 +421,6 @@
 		};
 		BC_5559E50352F8F6AD5DE236129E995304 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42348A1D10B90D3870CDFB69 /* Pods-ReactivePixel-Tests-iOS.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -489,7 +434,6 @@
 		};
 		BC_5E9C0F35A92E14A3347D6C5B208CF054 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 021AF46A1628C2CAC50D369C /* Pods-ReactivePixel-Tests-iOS.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/Info.plist;
