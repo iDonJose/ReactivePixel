@@ -4,7 +4,7 @@ import ReactivePixel
 
 
 let editableText = ASEditableTextNode()
-editableText.frame.size = .init(width: 120, height: 60)
+editableText.frame.size = .init(width: 800, height: 1200)
 editableText.backgroundColor = #colorLiteral(red: 0.165422491, green: 0.9609375, blue: 0.6502349596, alpha: 1)
 
 /*:

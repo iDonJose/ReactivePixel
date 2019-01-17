@@ -3,7 +3,7 @@ import ReactivePixel
 
 
 let textView = UITextView(frame: .init(origin: .zero,
-                                         size: .init(width: 120, height: 60)))
+                                         size: .init(width: 800, height: 1200)))
 textView.backgroundColor = #colorLiteral(red: 0.5837298334, green: 0.6842804686, blue: 1, alpha: 1)
 
 

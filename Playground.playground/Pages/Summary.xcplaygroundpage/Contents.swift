@@ -9,7 +9,7 @@
  ***
 
  # ReactivePixel
- `ReactivePixel` extends UIKit and Texture (ASyncDisplayKit) with signals of UI events.
+ ReactiveSwift + UIKit + Texture (AsyncDisplayKit)
 
  ### Summary
 

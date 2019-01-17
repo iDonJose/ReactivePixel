@@ -3,8 +3,8 @@ import ReactivePixel
 
 
 let textField = UITextField(frame: .init(origin: .zero,
-                                         size: .init(width: 120, height: 60)))
-textField.backgroundColor = #colorLiteral(red: 0.5837298334, green: 0.6842804686, blue: 1, alpha: 1)
+                                         size: .init(width: 800, height: 1200)))
+textField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
 
 /*:

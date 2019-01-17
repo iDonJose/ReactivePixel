@@ -15,7 +15,7 @@ node.backgroundColor = #colorLiteral(red: 0.9305117997, green: 1, blue: 0.343498
 
 /// Listens to gesture events
 node.reactive.gesture(UITapGestureRecognizer())
-    .startWithValues { gesture in print("👉 Tap : \(gesture.state)") }
+    .startWithValues { _ in print("👉📱") }
 
 
 PlaygroundPage.current.liveView = node.view

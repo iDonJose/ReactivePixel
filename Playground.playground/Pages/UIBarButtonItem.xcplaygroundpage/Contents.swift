@@ -18,8 +18,8 @@ toolBar.items = [space, button, space]
 
 
 /// Listens to taps
-button.reactive.wasTapped
-    .startWithValues { _ in print("👉 Tap") }
+button.reactive.wasTapped()
+    .startWithValues { _ in print("👉📱") }
 
 
 PlaygroundPage.current.liveView = toolBar
