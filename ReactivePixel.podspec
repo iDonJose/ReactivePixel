@@ -6,9 +6,9 @@ Pod::Spec.new do |s|
 
     s.name         = "ReactivePixel"
     s.version      = "1.0.0"
-    s.summary      = "Reactive extensions of UIKit and Texture (AsyncDisplayKit)"
+    s.summary      = "ReactiveSwift + UIKit + Texture (AsyncDisplayKit)"
     s.description  = <<-DESC
-                        `ReactivePixel` extends UIKit and Texture (ASyncDisplayKit) with signals of UI events.
+                        Allows you to quickly and smartly bind you UI components from either `UIKit` or `Texture`, using the reactive binding mechanism provided by `ReactiveSwift`.
                         DESC
     s.homepage     = "https://github.com/iDonJose/ReactivePixel"
     s.source       = { :git => "https://github.com/iDonJose/ReactivePixel.git", :tag => "#{s.version}" }
@@ -38,8 +38,6 @@ Pod::Spec.new do |s|
     	texture.ios.deployment_target = "9.0"
 
 		texture.dependency 'ReactivePixel/UIKit'
-
-		texture.dependency 'ReactiveSwifty', '~> 1.0'
 		texture.dependency 'Texture/Core', '~> 2.7'
 
 		texture.source_files = [

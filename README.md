@@ -1,6 +1,6 @@
 # ReactivePixel
 
-> `ReactivePixel` extends UIKit and Texture (ASyncDisplayKit) with signals of UI events.
+Allows you to quickly and smartly bind you UI components from either `UIKit` or [`Texture`](https://github.com/TextureGroup/Texture), using the reactive binding mechanism provided by [`ReactiveSwift`](https://github.com/ReactiveCocoa/ReactiveSwift).
 <p align="center">
 	<a href="https://swift.org">
         <img src="https://img.shields.io/badge/Swift-4.2-orange.svg" />
@@ -68,6 +68,7 @@ To add *ReactivePixel* to your project manually, download the source code and pl
 ## 👏 Greetings
 *ReactivePixel* was made possible thanks to :
 - [ReactiveSwift](https://github.com/ReactiveCocoa/ReactiveSwift)
+- [Texture](https://github.com/TextureGroup/Texture)
 
 
 ## 📃 License

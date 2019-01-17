@@ -151,8 +151,7 @@ private final class Proxy: NSObject, UITextFieldDelegate {
 
 		textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
 
-        observer = textField.observe(\.selectedTextRange) {
-            [unowned self] object, change in
+        observer = textField.observe(\.selectedTextRange) { [unowned self] _, _ in
             self.didChangeSelection()
         }
 
