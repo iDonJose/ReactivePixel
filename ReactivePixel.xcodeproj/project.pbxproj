@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E95F3CDD3EE32E7CD2DE1E7 /* Pods_ReactivePixel_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED8F4CAA87A1F9273FA87CE /* Pods_ReactivePixel_iOS.framework */; };
+		82885C7C2248E10C0089E8C2 /* CAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82885C7B2248E10C0089E8C2 /* CAAnimation.swift */; };
 		82954353219FDBF1004C2F25 /* ASDisplayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82954352219FDBF1004C2F25 /* ASDisplayNode.swift */; };
 		82954355219FDD42004C2F25 /* ASControlNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82954354219FDD42004C2F25 /* ASControlNode.swift */; };
 		82954357219FE050004C2F25 /* ASEditableTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82954356219FE050004C2F25 /* ASEditableTextNode.swift */; };
@@ -64,6 +65,7 @@
 		825DCFAF219EDE0C00B1F103 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		825DCFB0219EDE0C00B1F103 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		825DCFB1219EDE0C00B1F103 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
+		82885C7B2248E10C0089E8C2 /* CAAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAnimation.swift; sourceTree = "<group>"; };
 		82954352219FDBF1004C2F25 /* ASDisplayNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASDisplayNode.swift; sourceTree = "<group>"; };
 		82954354219FDD42004C2F25 /* ASControlNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASControlNode.swift; sourceTree = "<group>"; };
 		82954356219FE050004C2F25 /* ASEditableTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASEditableTextNode.swift; sourceTree = "<group>"; };
@@ -139,6 +141,14 @@
 			name = Meta;
 			sourceTree = "<group>";
 		};
+		82885C7A2248E0E70089E8C2 /* Reactive CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				82885C7B2248E10C0089E8C2 /* CAAnimation.swift */,
+			);
+			path = "Reactive CoreGraphics";
+			sourceTree = "<group>";
+		};
 		828CB6AA219FD923008140AD /* Reactive Texture */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +213,9 @@
 			children = (
 				FR_625FFFFD2618091FA87CA4D5C3EADC5A /* Info.plist */,
 				FR_F71481E7DA621688F2FCA1E87776BB28 /* ReactivePixel.h */,
-				82DA3542219F65330050B473 /* Reactive UIKit */,
 				828CB6AA219FD923008140AD /* Reactive Texture */,
+				82DA3542219F65330050B473 /* Reactive UIKit */,
+				82885C7A2248E0E70089E8C2 /* Reactive CoreGraphics */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -334,6 +345,7 @@
 			files = (
 				82DA3560219F8AE90050B473 /* UISwitch.swift in Sources */,
 				82DA3562219F8B510050B473 /* UITextField.swift in Sources */,
+				82885C7C2248E10C0089E8C2 /* CAAnimation.swift in Sources */,
 				82DA3544219F66290050B473 /* UIBarButtonItem.swift in Sources */,
 				82DA3564219F905B0050B473 /* UITextView.swift in Sources */,
 				82DA3554219F86EC0050B473 /* UIView.swift in Sources */,
