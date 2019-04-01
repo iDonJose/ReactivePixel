@@ -8,7 +8,7 @@ inhibit_all_warnings!
 def pods
 
   # UI
-  pod 'Texture/Core', '~> 2.7'
+  pod 'Texture/Core', '~> 2.8'
 
   # Reactive
   pod 'ReactiveSwifty', '~> 1.0'

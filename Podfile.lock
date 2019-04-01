@@ -5,12 +5,12 @@ PODS:
     - ReactiveSwift (~> 4.0)
   - Result (4.1.0)
   - SwiftLint (0.29.4)
-  - Texture/Core (2.7)
+  - Texture/Core (2.8)
 
 DEPENDENCIES:
   - ReactiveSwifty (~> 1.0)
   - SwiftLint (~> 0.28)
-  - Texture/Core (~> 2.7)
+  - Texture/Core (~> 2.8)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -25,8 +25,8 @@ SPEC CHECKSUMS:
   ReactiveSwifty: ae1142a03dc0209b059e08ecc5a330e7eccbe6a9
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SwiftLint: 73f2ecfd0f6d812c8cb9a73c00fe809bc2504585
-  Texture: 9d7e38965cf22ccd7cd9c249dd78b3f14e70ab6c
+  Texture: fc6e0157201f3a6e503d364c147b1872e365cef4
 
-PODFILE CHECKSUM: 116bde54df0a350363ebed8c09598b995fa6eabd
+PODFILE CHECKSUM: 5ae50ca19903b914c6f97e42e367a2d7b916faa6
 
 COCOAPODS: 1.5.3
